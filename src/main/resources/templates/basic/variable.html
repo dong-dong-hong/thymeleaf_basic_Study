@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>SpringEL 표현식</h1>
+<ul>Object
+    <li>${user.username} = <span th:text="${user.username}"></span></li>
+    <li>${user['username']} = <span th:text="${user['username']}"></span></li>
+    <li>${user.getUsername()} = <span th:text="${user.getUsername()}"></span></li>
+</ul>
+<ul>List
+    <li>${users[0].username} = <span th:text="${users[0].username}"></span></li>
+    <li>${users[0]['username']} = <span th:text="${users[0]['username']}"></span></li>
+    <li>${users[0].getUsername()} = <span th:text="${users[0].getUsername()}"></span></li>
+</ul>
+<ul>Map
+    <li>${userMap['user1'].username} = <span th:text="${userMap['user1'].username}"></span></li>
+    <li>${userMap['user1']['username']} = <span th:text="${userMap['user1']['username']}"></span></li>
+    <li>${userMap['user1'].getUsername()} = <span th:text="${userMap['user1'].getUsername()}"></span></li>
+</ul>
+
+<h1>지역 변수 - (th:with)</h1>
+<div th:with="first=${users[0]}">
+    <p>처음 사람의 이름은 <span th:text="${first.username}"></span></p>
+</div>
+
+</body>
+</html>
+
+<!--
+SpringEL 다양한 표현식 사용
+
+Object
+user.username : user의 username을 프로퍼티 접근 user.getUsername()
+user['username'] : 위와 같음 user.getUsername()
+user.getUsername() : user의 getUsername() 을 직접 호출
+
+List
+users[0].username : List에서 첫 번째 회원을 찾고 username 프로퍼티 접근
+list.get(0).getUsername()
+users[0]['username'] : 위와 같음
+users[0].getUsername() : List에서 첫 번째 회원을 찾고 메서드 직접 호출
+
+Map
+userMap['user1'].username : Map에서 user1을 찾고, username 프로퍼티 접근
+map.get("user1").getUsername()
+userMap['user1']['username'] : 위와 같음
+userMap['user1'].getUsername() : Map에서 userA를 찾고 메서드 직접 호출
+
+-->
