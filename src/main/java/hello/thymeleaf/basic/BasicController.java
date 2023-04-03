@@ -86,6 +86,20 @@ public class BasicController {
         //#ids : 아이디 처리 관련 기능 제공
     }
 
+    @GetMapping("link")
+    public String link(Model model) {
+        model.addAttribute("param1", "date1");
+        model.addAttribute("param2", "date2");
+        return "basic/link";
+    }
+
+    @GetMapping("/literal")
+    public String literal(Model model){
+        model.addAttribute("data", "Spring");
+        return "basic/literal";
+    }
+
+
     @Data
     static class User{
         private String username;
